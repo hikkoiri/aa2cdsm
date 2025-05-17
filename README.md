@@ -1,12 +1,12 @@
-# Automated AWS to Cloudflare DNS sync magic
+# **A**utomated **A**WS to **C**loudflare **D**NS **S**ync **M**agic
 
-- [Automated AWS to Cloudflare DNS sync magic](#automated-aws-to-cloudflare-dns-sync-magic)
+- [**A**utomated **A**WS to **C**loudflare **D**NS **S**ync **M**agic](#automated-aws-to-cloudflare-dns-sync-magic)
   - [What?](#what)
   - [How does is it work?](#how-does-is-it-work)
   - [Roadmap](#roadmap)
   - [Prerequisites](#prerequisites)
     - [Enable AWS Config](#enable-aws-config)
-    - [Create and store an API Key](#create-and-store-an-api-key)
+    - [Create and store a Cloudflare API Key](#create-and-store-a-cloudflare-api-key)
   - [Configuration](#configuration)
     - [deploymentRegions](#deploymentregions)
     - [dnsProvider](#dnsprovider)
@@ -41,7 +41,7 @@ If not already done, enable AWS Config in the AWS console in the regions you wan
 
 > AWS Config can be costly if configured incorrectly, you have been warned.
 
-### Create and store an API Key
+### Create and store a Cloudflare API Key
 
 1) Create a new Cloudflare API key using the Cloudflare dashboard:
 ![Cloudflare API Key Creation](./assets/cf-api-token-1.png)
