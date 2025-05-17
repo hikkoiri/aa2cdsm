@@ -1,20 +1,32 @@
 #!/usr/bin/env node
 import * as cdk from 'aws-cdk-lib';
 import { Aa2CdsmStack } from '../lib/aa2cdsm-stack';
+import { DnsProvider } from '../lambda/enums';
+
+
+
+export interface Aa2CdsmStackProps extends cdk.StackProps {
+  dnsProvider: DnsProvider;
+  notificationSnsTopicArn?: string;
+}
+
 
 const app = new cdk.App();
-new Aa2CdsmStack(app, 'Aa2CdsmStack', {
-  /* If you don't specify 'env', this stack will be environment-agnostic.
-   * Account/Region-dependent features and context lookups will not work,
-   * but a single synthesized template can be deployed anywhere. */
 
-  /* Uncomment the next line to specialize this stack for the AWS Account
-   * and Region that are implied by the current CLI configuration. */
-  // env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
+const deploymentRegions = ['us-east-1', 'eu-central-1']
+for (const region of deploymentRegions) {
 
-  /* Uncomment the next line if you know exactly what Account and Region you
-   * want to deploy the stack to. */
-  // env: { account: '123456789012', region: 'us-east-1' },
+  const prodProps: Aa2CdsmStackProps = {
+    dnsProvider: DnsProvider.CLOUDFLARE,
+    notificationSnsTopicArn: `arn:aws:sns:${region}:${process.env.CDK_DEFAULT_ACCOUNT}:sns-2-slack-notification-topic`
+  };
 
-  /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
-});
+
+  new Aa2CdsmStack(app, `aa2cdsm-stack-${region}`, {
+    ...prodProps,
+    env: {
+      region,
+      account: process.env.CDK_DEFAULT_ACCOUNT,
+    },
+  });
+}
