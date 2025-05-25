@@ -1,6 +1,6 @@
-# **A**utomated **A**WS to **C**loudflare **D**NS **S**ync **M**agic
+# Automated AWS to Cloudflare DNS Sync Magic
 
-- [**A**utomated **A**WS to **C**loudflare **D**NS **S**ync **M**agic](#automated-aws-to-cloudflare-dns-sync-magic)
+- [Automated AWS to Cloudflare DNS Sync Magic](#automated-aws-to-cloudflare-dns-sync-magic)
   - [What?](#what)
   - [How does is it work?](#how-does-is-it-work)
   - [Roadmap](#roadmap)
@@ -13,6 +13,7 @@
     - [notificationSnsTopicArn](#notificationsnstopicarn)
   - [Deployment](#deployment)
 
+> **Project on hold:** AWS is not as cheap as thought and missing resource change events on REST API Custom domains make the targeted goal hard to reach in a clean way. 
 
 ## What?
 
@@ -20,8 +21,10 @@ Already a fan of Cloudflare or too greedy to pay for AWS hosted zones? This proj
 
 - [x] a fresh ACM certificate needs to be validated through the DNS challenge.
 - [ ] a new Cloudfront distribution with custom domain is added.
-- [ ] an API Gateway with custom domain is provisioned.
+- [ ] an API Gateway REST API with custom domain is provisioned.
 - [ ] a Cognito custom domain is added.
+
+> Unchecked features still need to be implemented.
 
 
 ## How does is it work?
